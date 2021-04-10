@@ -39,4 +39,21 @@ public class JsonLocationInformation {
 	public JsonLocation getPropertyLocation(final String propertyName) {
 		return propertyLocations.get(propertyName);
 	}
+	
+	private String locationFormatter(final JsonLocation loc) {
+		return "Line: " + loc.getLineNr() + " Column: " + loc.getColumnNr() + "\n";
+	}
+	
+	@Override
+	public String toString() {
+		final var str = new StringBuilder();
+		str.append("Bean ");
+		str.append(locationFormatter(beanLocation));
+		str.append("Properties:\n");
+		for(final var pair : getPropertyLocations().entrySet()) {
+			str.append("- " + pair.getKey() + " ");
+			str.append(locationFormatter(pair.getValue()));
+		}
+		return str.toString();
+	}
 }
