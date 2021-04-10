@@ -1,0 +1,9 @@
+version: "1.0.0"
+info:
+ name: "My new REST API"
+ description: "supertuber rest api"
+ version: 3.0
+ created: "2020-10-10 22:20:10"
+imports:
+ - "test.yaml"
+ - "test1.yaml"
