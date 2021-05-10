@@ -20,6 +20,7 @@ public class Info {
 	public String version;
 	public OffsetDateTime created;
 	
+	public Info() {}
 	public Info(final String version) {
 		this.version = version;
 	}
