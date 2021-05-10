@@ -9,6 +9,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import ch.ocsource.yasr.jackson.BeanDeserializerFactory;
+import ch.ocsource.yasr.parser.validator.Validator;
 
 public abstract class ConverterBase {
 	protected ObjectMapper getMapper(final File file) {
@@ -17,5 +18,10 @@ public abstract class ConverterBase {
 		mapper.findAndRegisterModules();
 		mapper.registerModule(new JavaTimeModule());
 		return mapper;
+	}
+	
+	protected void validateModel(final ModelBase doc) {
+		final var validator = new Validator();
+		validator.validate(doc);
 	}
 }

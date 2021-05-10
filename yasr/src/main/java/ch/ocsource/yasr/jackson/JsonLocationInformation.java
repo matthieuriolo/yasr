@@ -7,6 +7,8 @@ import java.util.Map;
 import com.fasterxml.jackson.core.JsonLocation;
 
 public class JsonLocationInformation {
+	private static final String UNKNOWN_BEAN = "<unknown>";
+	
 	private Path path;
 	private JsonLocation beanLocation;
 	private Map<String, JsonLocation> propertyLocations = new HashMap<>();
@@ -46,8 +48,17 @@ public class JsonLocationInformation {
 	
 	@Override
 	public String toString() {
+		return toString(UNKNOWN_BEAN);
+	}
+
+	public String toString(final String className) {
 		final var str = new StringBuilder();
+		str.append("In file: ");
+		str.append(path.toAbsolutePath());
+		str.append("\n");
 		str.append("Bean ");
+		str.append(className);
+		str.append(" ");
 		str.append(locationFormatter(beanLocation));
 		str.append("Properties:\n");
 		for(final var pair : getPropertyLocations().entrySet()) {

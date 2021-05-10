@@ -17,4 +17,9 @@ public class Converter extends ConverterBase implements ch.ocsource.yasr.parser.
 		doc = mapper.readValue(file, Document.class);
 		System.out.println(doc);
 	}
+
+	@Override
+	public void validate() {
+		validateModel(doc);
+	}
 }

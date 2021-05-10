@@ -7,5 +7,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 public interface Converter {
-	void read(final File file) throws JsonParseException, JsonMappingException, IOException;
+	public void read(final File file) throws JsonParseException, JsonMappingException, IOException;
+	public void validate();
 }
